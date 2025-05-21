@@ -136,6 +136,7 @@
     <Compile Include="Models\Games\PaintTheTownRedConnector.cs" />
     <Compile Include="Models\Games\NexMachinaConnector.cs" />
     <Compile Include="Models\Games\PeggleNightsConnector.cs" />
+    <Compile Include="Models\Games\PicayuneDreamsConnector.cs" />
     <Compile Include="Models\Games\PuyoPuyo2MDConnector.cs" />
     <Compile Include="Models\Games\TetrisNESConnector.cs" />
     <Compile Include="Models\Games\MinesweeperClassyConnector.cs" />
