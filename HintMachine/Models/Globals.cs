@@ -74,6 +74,7 @@ namespace HintMachine.Models
             new PeggleDeluxeConnector(),
             new PeggleNightsConnector(),
             new AdvanceWarsDualStrikeConnector(),
+            new NubbysNumberFactoryConnector(),
         };
 
         public static IGameConnector FindGameFromName(string name)
