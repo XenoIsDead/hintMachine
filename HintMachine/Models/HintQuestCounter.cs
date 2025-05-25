@@ -16,6 +16,10 @@ namespace HintMachine.Models
         /// If value moves by more than this value in one tick (cheats, memory values going nuts...), it's ignored
         /// </summary>
         public long MaxIncrease { get; set; } = 0;
+        /// <summary>
+        /// If goal is hit, increase next goal by this value. A value of -1 will cause the value to double.
+        /// </summary>
+        public long GoalIncrease { get; set; } = 0;
 
         /// <summary>
         /// The current value reflecting current quest progression
@@ -97,7 +101,17 @@ namespace HintMachine.Models
             {
                 obtainedHints += AwardedHints;
                 CurrentValue -= GoalValue;
+                if (GoalIncrease > 0)
+                {
+                    GoalValue += GoalIncrease;
+                }
+                else if (GoalIncrease < 0)
+                {
+                    GoalValue += GoalValue;
+                }
+                ;
             }
+            
 
             return obtainedHints;
         }
@@ -161,14 +175,14 @@ namespace HintMachine.Models
         {
             _progressBar.Value = CurrentValue;
             _progressBarOverlayText.Text = CurrentValue + " / " + GoalValue;
-
+            _progressBar.Maximum = GoalValue;
 #if DEBUG
             if (CooldownBetweenIncrements > 0)
             {
                 DateTime now = DateTime.UtcNow;
                 TimeSpan t = now - _lastIncrementTime;
                 double cooldown = CooldownBetweenIncrements - t.TotalSeconds;
-                if(cooldown > 0)
+                if (cooldown > 0)
                     _progressBarOverlayText.Text += $" ({Math.Ceiling(cooldown)}s cooldown)";
             }
 #endif

@@ -29,7 +29,7 @@ namespace HintMachine.Models.Games
             Platform = "PC";
             SupportedVersions.Add("Steam");
             CoverFilename = "nubbysnumberfactory.png";
-            Author = "MogDogBlog";
+            Author = "XenoIsDead";
 
             Quests.Add(_WinQuest);
         }
@@ -132,7 +132,7 @@ namespace HintMachine.Models.Games
 		private string FindSaveData(){
 			string path = Environment.GetFolderPath(System.Environment.SpecialFolder.LocalApplicationData);
             path += @"\NNF_FULLVERSION";
-            Console.WriteLine(path);
+            Debug.WriteLine(path);
             return path;
 		}
     }
